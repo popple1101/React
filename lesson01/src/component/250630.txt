@@ -1,0 +1,21 @@
+# 256030
+git 명령어
+
+react 는 프로젝트 폴더가 만들어지면 .git(저장소) 를
+vs code 에서 자동으로 프로젝트 폴더에 만들어 줍니다.
+
+but,...... 수업용이므로 프로젝트를 모두 React 폴더에서 만들어 React 폴더를 저장소로 만들 것 입니다.
+
+<git 명령어>
+- 저장소 초기화
+C112@DESKTOP-7M22O1D MINGW64 /c/Class250616/React
+$ git init
+
+-원격 github 주소 등록할 때
+C112@DESKTOP-7M22O1D MINGW64 /c/Class250616/React (main)
+$ git remote add origin https://github.com/popple1101/React.git
+                    ㄴ origin 은 원격저장소 이름
+
+$ git remote -v
+<vs code>
+staging -> commit -> push

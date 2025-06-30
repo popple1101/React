@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 // import App from './App';
 import reportWebVitals from './reportWebVitals';
-import App from './component/App2';
+import App from './component/App3';
+// import App from './component/App2';
 // import 는 외부 파일의 함수, 라이브러리 사용할 때
 //           미리 가져오기.(메모리 로드)
 
@@ -15,7 +16,7 @@ root.render(
   <React.StrictMode>
     {/* <App /> */}
     <App/>
-    {/* 테스트용 */}
+    {/* 테스트 중.. */}
   </React.StrictMode>
 );
 
