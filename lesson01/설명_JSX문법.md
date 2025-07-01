@@ -51,6 +51,7 @@ return (
 ✅ 5. 조건부 렌더링
 
 ```jsx
+// 3항 조건식
 {
   isLoggedIn ? <Logout /> : <Login />;
 }
@@ -67,6 +68,7 @@ return (
 - JSX 안에서 삼항 연산자 또는 &&를 사용하여 조건부 렌더링 가능
 
 ✅ 6. 스타일 적용 방식
+- 스타일을 정의한 내용을 하나의 객체로 다룹니다.
 
 ```jsx
 const divStyle = { color: "blue", fontSize: "16px" };
@@ -74,7 +76,7 @@ const divStyle = { color: "blue", fontSize: "16px" };
 return <div style={divStyle}>Styled Text</div>;
 ```
 
-- style은 객체 형태로 작성 (camelCase 사용)
+- style은 객체 형태로 작성 (camelCase 사용- fontSize 는 원래는 CSS 에서 font-size)
 
 ✅ 7. 배열/리스트 렌더링
 
@@ -89,8 +91,9 @@ return (
 );
 ```
 
-- JSX 안에서 .map() 사용 가능
-- 반복 요소에는 반드시 key 속성 필요
+- JSX 안에서 .map() 사용 가능. 많이 사용하는 배열 메소드(filter, reduce)
+- 🔥반복 요소에는 반드시 key 속성 필요🔥 예시: 반복요소는 li, td
+- key 로 지정한 값은 중복이 없어야 합니다.
 
 ✅ 8. 주석 사용 방법
 
@@ -102,8 +105,8 @@ return (
   </div>
 );
 ```
-
-✅ 9. Fragment (<></>)
+ 
+✅ 9. Fragment (<></>) 파편
 
 ```jsx
 return (
@@ -118,9 +121,10 @@ return (
 - <React.Fragment> 또는 축약형 <></> 사용
 
 ✅ 10. 컴포넌트 사용
+- 클래스형 컴포넌트는 지금은 거의 사용하지 않습니다.
 
 ```jsx
-// 정의
+// 정의 : 함수형 컴포넌트
 function Welcome(props) {
   return <h1>Hello, {props.name}</h1>;
 }
@@ -131,7 +135,8 @@ function Welcome(props) {
 ```
 
 - 대문자로 시작하는 태그는 사용자 정의 컴포넌트로 인식됨
-- props를 통해 데이터 전달
+- props를 통해 데이터 전달 : 부모 컴포넌트가 자식 컴포넌트에게 데이터 전달할 때
+    ㄴ 컴포넌트가 계층 구조로 사용됨에 따라 필요.
 
 ✅ 11. 이벤트 속성
 
@@ -140,7 +145,7 @@ function Welcome(props) {
 ```
 
 - onClick, onChange 등 DOM 이벤트는 camelCase로 작성
-- 이벤트 핸들러는 함수 참조 또는 람다식 사용 가능
+- 이벤트 핸들러는 함수 참조 또는 람다식(화살표 함수) 사용 가능
 
 ✅ 참고: JSX는 결국 JS
 
