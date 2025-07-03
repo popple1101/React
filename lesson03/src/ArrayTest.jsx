@@ -1,5 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 
+// Day03_01: 배열이 state 변수일 때,
+//           상태값 변경 함수 테스트
+// 여기에서 사용한 JS 문법 테스트 : public/es6test 폴더 참고
 export default function App() {
     // 할일 목록 배열
     const initVal = [

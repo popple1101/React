@@ -13,7 +13,7 @@ export default function TodoListItem({ todo, onRemove, onChecked }) {
     const handleButton = (id, text) => {
         //리엑트 객체이름 window 생략 못함
         const yn = window.confirm(`일정 ${id}:${text}를 삭제하십니까?`)
-        if (yn) handleRemove(id)
+        if (yn) onRemove(id)
         // 🔥 onRemove 함수 : 부모컴포넌트에게 props 로 전달 받음
     }
 
