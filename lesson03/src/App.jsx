@@ -74,3 +74,7 @@ export default function App() {
     </div>
   )
 }
+
+// 
+// 1. map 을 가지고 todos 배열을 반복을 돌림 (schedule.todos.map())
+// 2. time text 를 가져옴
