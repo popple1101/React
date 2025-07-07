@@ -21,7 +21,7 @@ MongoClient.connect(MONGODB_URI)
   .catch((error) => console.error('MongoDB 연결 실패:', error))
 
 /*
-  curl -X GET http://localhost:5000/api/schedules
+  curl -X GET http://localhost:5001/api/schedules
   이 요청 schedules 컬렉션의 모든 documents(데이터)를 가져옵니다.
 */
 app.get("//api/schedules", async (req, resp) => {
@@ -34,7 +34,7 @@ app.get("//api/schedules", async (req, resp) => {
 })
 
 /*
-  curl -X GET http://localhost:5000/api/schedules/2025-07-09
+  curl -X GET http://localhost:5001/api/schedules/2025-07-09
   이 요청은 2025-07-09 날짜의 데이터를 가져옵니다.
 */
 app.get('/api/schedules/:date', async (req, resp) => {
@@ -63,12 +63,12 @@ app.listen(PORT, () => {
 })
 
 /*
-curl -X PUT http://localhost:5000/api/schedules/2025-07-09 ^
+curl -X PUT http://localhost:5001/api/schedules/2025-07-09 ^
   -H "Content-Type: application/json" ^
   -d "{  \"time\": \"15:00\", \"text\": \"운동\", \"checked\": false }"
 이 요청은 2025-07-09 날짜의 todos 배열에 새 '운동' 항목을 추가(기존배열 수정)합니다.
 
-curl -X PUT http://localhost:5000/api/schedules/2025-07-11 ^
+curl -X PUT http://localhost:5001/api/schedules/2025-07-11 ^
   -H "Content-Type: application/json" ^
   -d "{  \"time\": \"08:00\", \"text\": \"운동\", \"checked\": false }"
 이 요청은 2025-07-11 날짜의 데이터가 없습니다. 새롭게 날짜 요소를 추가합니다.
@@ -140,14 +140,14 @@ app.put("/api/schedules/:date", async (req, res) => {
 });
 
 /*
-curl -X DELETE http://localhost:5000/api/schedules/ ^
+curl -X DELETE http://localhost:5001/api/schedules/ ^
   -H "Content-Type: application/json" ^
   -d "{  \"time\": \"15:00\", \"date\": \"2025-07-09\"  }"
 
 이 요청은 2025-07-09 날짜의 todos 배열에 time "15:00" 을 삭제합니다.  
 
 
-curl -X DELETE http://localhost:5000/api/schedules/ ^
+curl -X DELETE http://localhost:5001/api/schedules/ ^
   -H "Content-Type: application/json" ^
   -d "{ \"date\": \"2025-07-05\"  }"
 이 요청은 2025-07-11 날짜 요소를 삭제합니다.
@@ -215,12 +215,13 @@ app.delete("/api/schedules/", async (req, res) => {
     res.status(500).json({ error: "서버 오류가 발생했습니다." });
   }
 });
-
-// curl -X PATCH http://localhost:5000/api/schedules ^
-//   -H "Content-Type: application/json" ^
-//   -d "{  \"date\": \"2025-07-09\", \"time\": \"15:00\", \"checked\": false }"
+/*
+curl -X PATCH http://localhost:5001/api/schedules ^
+  -H "Content-Type: application/json" ^
+  -d "{  \"date\": \"2025-07-09\", \"time\": \"15:00\", \"checked\": false }"
 
 // 이 요청은 날짜 2025-07-09. 시간 14:00 의 checked 를 false 로 변경합니다.
+* */
 
 app.patch('/api/schedules', async(req,resp) => {
   
@@ -254,8 +255,12 @@ app.patch('/api/schedules', async(req,resp) => {
       )
 
       console.log('patch result:',result)
+      if(result.matchedCount === 0) {
+        return resp.status(404).json({error: "해당 날짜의 문서를 찾을 수 없습니다."})
+      }
 
-      resp.status(200).json({message: `${date} ${time} ${checked} 변경완료.`})
+      resp.status(200).json({message: `${date} ${time} ${checked} 변경완료.`,
+        modifiedCount: result.modifiedCount }) // 업데이트 정상이면 1
 
   } catch (error) {
       console.error('Mongo Db 오류 : ',error)
