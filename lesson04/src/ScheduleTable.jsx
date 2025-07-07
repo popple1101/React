@@ -24,9 +24,10 @@ const date4 = {
   todo: ["수업", "회의", "점심식사", "운동", "업무", "친구약속"],
 };
 
-const schedules = [date1, date2, date3, date4];
+const schedules = [date1, date2, date3, date4]; // 
 
 export default function ScheduleTable() {
+  // 데이터는 4개 중 하나를 선택해서 상태값으로 관리
   const [schedule, setSchedule] = useState(schedules[0]);
 
   const handleSelected = (idx) => {
@@ -113,3 +114,19 @@ export default function ScheduleTable() {
     </div>
   );
 }
+/**ScheduleTable.jsx 코드 분석.
+
+1. {date,time,todo} 객체의 배열을 자료구조(데이터) 사용 : schedules 변수
+	ㄴ time, todo는 배열이다.
+    schedules 변수는 인덱스로 접근, ,map 메소드 콜백함수 인자로 한개씩 저장
+
+    예시 :  schedules.map((sch, idx) => 실행코드에서 요소 한개씩 sch에 저장)
+            handleSelected(idx) : 인덱스값 함수에 전달
+
+2. 1번 데이터는 4개 중 하나를 선택해서 상태값으로 관리
+   const [schedule, setSchedule] = useState(schedules[0]);
+
+3. 버튼 클릭할 때마다 schedule 을 변경. => setSchedule(schedules[idx])
+
+4. 3번에서 상태값 schedule 을 변경하면 schedule 를 사용하는 태그 요소의 출력이 변경됩니다.
+   (재렌더링) *참고: 기전 JS 는 DOM 을 직접 조작 */

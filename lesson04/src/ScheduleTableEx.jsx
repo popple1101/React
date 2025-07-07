@@ -44,6 +44,7 @@ export default function ScheduleTable() {
           <tr>
             {schedule.todos.map((t, idx) => (
               <th
+              // key는 중복되지 않는 유일한 값으로 합니다.(요소의 변수처럼 취급)
                 key={`time-${idx}`}
                 style={{
                   backgroundColor: '#f8f9fa',
