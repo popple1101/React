@@ -1,0 +1,86 @@
+/* 타임라인 전체 너비 조정 */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 600px;
+  /* 필요시 조정 */
+  margin: 0 auto;
+}
+
+/* 각 항목을 한 줄로 정렬 */
+.timeline-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  white-space: nowrap;
+  /* 줄바꿈 방지 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 시간, 텍스트, 체크박스를 한 줄로 표시 */
+.time,
+.task,
+.checkbox-container {
+  margin-right: 10px;
+}
+
+/* 텍스트가 너무 길 경우 생략 처리 */
+.task {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 체크박스 부분 정렬 */
+.checkbox-container {
+  display: flex;
+  align-items: center;
+}
+
+.custom-checkbox {
+  display: flex;
+  align-items: center;
+}
+
+.status-text {
+  margin-left: 6px;
+  font-size: 0.9rem;
+}
+
+/* 완료된 항목 스타일 (선택 사항) */
+.completed {
+  color: gray;
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+/* 삭제 아이콘 스타일 */
+.delete-icon {
+  margin-left: 10px;
+  color: #dc3545;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.delete-icon:hover {
+  transform: scale(1.2);
+}
+
+.remove {
+  display: flex;
+  align-items: center;
+  color: #ff6b6b;
+  cursor: pointer;
+  padding-left: 5px;
+}
+
+.remove:hover {
+  color: #ff8787;
+}

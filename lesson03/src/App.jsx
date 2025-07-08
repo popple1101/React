@@ -7,7 +7,7 @@ import TodoTemplate from "./components/TodoTemplate";
 // Day4_01 : chilren 속성 사용해서 완성함.
 //           useRef() 훅으로 재렌더링 횟수 비교(App_V1.jsx)
 export default function App() {
-  const renderCount = useRef(0) // useRef 는 리액트 함수(훅)
+  const renderCount = useRef(0) // useRef 는 리액트 함수(훅) { current: 0 }
   renderCount.current += 1
   // 
 
@@ -30,7 +30,7 @@ export default function App() {
       },
     ];
     const [todos, setTodos] = useState(initVal);
-    const maxid = useRef(todos.length + 1);
+    const maxid = useRef(todos.length + 1); 
     
     // 🔥 상태변수 todos 변경
     function handleChecked(id) {    
