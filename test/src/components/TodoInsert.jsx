@@ -1,6 +1,7 @@
 // 할 일 입력 및 추가 기능
 
 import React, { useState } from "react"
+import { MdAdd } from "react-icons/md"
 
 // 1. useState 훅 사용해서 입력 값(value) 상태 관리
 // 2. onSubmit 이벤트로 할일 추가 처리 (handleSubmit)

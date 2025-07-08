@@ -1,7 +1,9 @@
 // 1. useState, useRef 훅 import
 import { useRef } from "react";
 import { useState } from "react";
-import TodoTemplate from "../../lesson03/src/components/TodoTemplate";
+import TodoTemplate from "./components/TodoTemplate";
+import TodoInsert from "./components/TodoInsert";
+// import TodoList from "../../lesson03/src/components/TodoList";
 
 function App() {
 
@@ -85,10 +87,8 @@ function App() {
             handleInsert는 부모가 가진 실제 함수 이름
             부모가 handleInsert 함수를 onInsert라는 이름으로 자식에게 줬고
             자식은 onInsert를 통해 부모 함수인 handleInsert를 호출할 수 있어
-
-
         */}
-        <TodoList todos={todos} onRemove={handleRemove} onChecked={handleChecked} />
+        {/* <TodoList todos={todos} onRemove={handleRemove} onChecked={handleChecked} /> */}
         {/* 할 일 목록을 화면에 리스트로 보여주는 컴포넌트
             나중에 todos, onRemove, onChecked 같은 props를 넘겨야 동작함
         */}
