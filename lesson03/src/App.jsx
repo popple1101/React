@@ -39,7 +39,7 @@ export default function App() {
       );
       setTodos(newtodos);
     }
-  
+
     // todos  할 일 객체 목록 중 삭제하기 // 🔥 상태변수 todos 변경
     function handleRemove(id) {
       const newtodos = todos.filter((item) => item.id !== id);
