@@ -3,7 +3,8 @@ import { useRef } from "react";
 import { useState } from "react";
 import TodoTemplate from "./components/TodoTemplate";
 import TodoInsert from "./components/TodoInsert";
-// import TodoList from "../../lesson03/src/components/TodoList";
+import TodoList from "./components/TodoList";
+
 
 function App() {
 
@@ -57,11 +58,22 @@ function App() {
     setTodos([...todos, todo]) // 직접 변경은 React가 인식 못함. 새로운 배열로 교체 -> React가 감지하고 렌더링함
   }
 
-  function handleRemove() {
-
+  // todos 배열에서 해당 id를 가진 할 일을 제외하고
+  // setTodos로 상태를 업데이트합니다.
+  function handleRemove(id) {
+    const newTodos = todos.filter(todo => todo.id !== id) // true 남김
+    setTodos(newTodos)
   }
-  function handleChecked() {
 
+  //id를 받아서
+  //todos 배열에서 해당 id를 가진 항목의 checked 값을 true → false 또는 false → true로 바꾸고
+  //나머지 항목은 그대로 유지한 뒤
+  //새 배열로 상태를 업데이트하기
+  function handleChecked(id) {
+    const newTodos = todos.map(item => 
+      item.id === id ? {...item, checked: !item.checked} : item
+    )
+    setTodos(newTodos)
   }
 
   // 5. 렌더링 횟수 useRef로 추적
@@ -88,11 +100,12 @@ function App() {
             부모가 handleInsert 함수를 onInsert라는 이름으로 자식에게 줬고
             자식은 onInsert를 통해 부모 함수인 handleInsert를 호출할 수 있어
         */}
-        {/* <TodoList todos={todos} onRemove={handleRemove} onChecked={handleChecked} /> */}
+        <TodoList todos={todos} onRemove={handleRemove} onChecked={handleChecked} />
         {/* 할 일 목록을 화면에 리스트로 보여주는 컴포넌트
             나중에 todos, onRemove, onChecked 같은 props를 넘겨야 동작함
         */}
       </TodoTemplate>
+      <div>랜더링 카운트 : {renderCount.current}</div>
     </div>
   )
 }

@@ -2,6 +2,7 @@
 
 import React, { useState } from "react"
 import { MdAdd } from "react-icons/md"
+import '../assets/css/TodoInsert.scss'
 
 // 1. useState 훅 사용해서 입력 값(value) 상태 관리
 // 2. onSubmit 이벤트로 할일 추가 처리 (handleSubmit)
@@ -35,7 +36,7 @@ export default function TodoInsert({ onInsert }) {
   return (
     <div>
         {/* form 태그가 제출될 때 실행되는 이벤트 핸들러 */}
-        <form onSubmit={handleSubmit}>
+        <form className="TodoInsert"  onSubmit={handleSubmit}>
             <input
             placeholder="일정을 입력하세요"
             value={value}
